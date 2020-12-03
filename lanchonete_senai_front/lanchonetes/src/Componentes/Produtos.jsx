@@ -20,7 +20,7 @@ class Produtos extends Component {
     definirNoticias(){
         // let url = this.urlAPI + 'artigos/?categoria=' + this.props.categoriaAtiva
         let url = this.urlAPI + 'produtos'
-        console.log(url)
+        
         axios.get(url, {auth: {username: 'admin', password: 'testando.sempre'}})
 		.then(response => {
 			this.setState({ produtos: response.data });
@@ -40,11 +40,10 @@ class Produtos extends Component {
         this.definirNoticias();
     }
     render() {
-        console.log(this.state.produtos);
         if(this.state.produtos.length){
 			return (<div className="row mb-2">
 				{this.state.produtos.map((produto, i) => (
-					<CardProduto key={i} imagem={produto.imagem} categoria={produto.categoria} nome={produto.nome} descricao={produto.descricao}></CardProduto>
+					<CardProduto key={i} id={produto.id} imagem={produto.imagem} categoria={produto.categoria} nome={produto.nome} descricao={produto.descricao}></CardProduto>
 				))}
 				</div>);
         }else{

@@ -10,7 +10,6 @@ function Principal(props) {
 		{'url': 'lojas', 'nome': 'Lojas'}, 
 		{'url': 'produtos', 'nome': 'Produtos'},
 	];
-
 	// define a variável categoria ativa
 	let categoriaAtiva;
 	
