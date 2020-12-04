@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Componentes/Header'
 import FilterMenu from './Componentes/FilterMenu'
 import Produtos from './Componentes/Produtos'
+import Login from './Componentes/Login';
 
 function Principal(props) {
 
@@ -27,6 +28,9 @@ function Principal(props) {
 			<FilterMenu categorias={categorias} categoriaAtiva={categoriaAtiva}></FilterMenu>
 			<Produtos categoriaAtiva={categoriaAtiva}></Produtos>
 		</div>
+		// <div className="container-fluid">
+		// 	<Login></Login>
+		// </div>
 	);
 }
 
