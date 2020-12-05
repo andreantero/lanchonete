@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Componentes/Header'
 import FilterMenu from './Componentes/FilterMenu'
 import Produtos from './Componentes/Produtos'
+import Promocoes from './Componentes/Promocoes'
 import Login from './Componentes/Login';
 
 function Principal(props) {
@@ -10,6 +11,7 @@ function Principal(props) {
 	const categorias = [
 		{'url': 'lojas', 'nome': 'Lojas'}, 
 		{'url': 'produtos', 'nome': 'Produtos'},
+		{'url': 'promocoes', 'nome': 'Promocoes'},
 	];
 	// define a variável categoria ativa
 	let categoriaAtiva;
@@ -26,7 +28,8 @@ function Principal(props) {
 		<div className="container-fluid">
 			<Header titulo={'SENAI LANCHES'} logo={'/logo192.png'} />
 			<FilterMenu categorias={categorias} categoriaAtiva={categoriaAtiva}></FilterMenu>
-			<Produtos categoriaAtiva={categoriaAtiva}></Produtos>
+			{/* <Produtos categoriaAtiva={categoriaAtiva}></Produtos> */}
+			<Promocoes categoriaAtiva={categoriaAtiva}></Promocoes>
 		</div>
 		// <div className="container-fluid">
 		// 	<Login></Login>

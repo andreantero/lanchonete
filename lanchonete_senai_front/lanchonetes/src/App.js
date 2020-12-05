@@ -11,8 +11,8 @@ function App() {
 		<Router>
 			<div>
 				<Route path="/categoria/:categoria" component={Principal}></Route>
-				<Route path="/principal" exact component={Principal}></Route>
-				<Route path="/" component={Login}></Route>
+				<Route path="/" exact component={Principal}></Route>
+				{/* <Route path="/" component={Login}></Route> */}
 			</div>
 		</Router>
 	);
