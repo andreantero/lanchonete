@@ -6,12 +6,11 @@ import Promocoes from './Componentes/Promocoes'
 import Login from './Componentes/Login';
 
 function Principal(props) {
-
+	console.log(props);
 	// Categorias a serem apresentadas no menu
 	const categorias = [
 		{'url': 'lojas', 'nome': 'Lojas'}, 
-		{'url': 'produtos', 'nome': 'Produtos'},
-		{'url': 'promocoes', 'nome': 'Promocoes'},
+		{'url': 'produtos', 'nome': 'Promocoes'},
 	];
 	// define a variável categoria ativa
 	let categoriaAtiva;
@@ -23,7 +22,8 @@ function Principal(props) {
 	} else {
 		categoriaAtiva = 'geral';
 	}
-
+	console.log(props.match.params.categoria);
+	console.log(categoriaAtiva);
 	return (
 		<div className="container-fluid">
 			<Header titulo={'SENAI LANCHES'} logo={'/logo192.png'} />

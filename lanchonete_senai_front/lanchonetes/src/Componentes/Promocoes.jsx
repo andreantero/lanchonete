@@ -57,6 +57,7 @@ class Promocoes extends Component {
               categoria={promocao.produto.categoria}
               nome={promocao.produto.nome}
               descricao={promocao.produto.descricao}
+              destaque={promocao.destaque}
               loja_nome={promocao.loja.nome}
               loja_cidade={promocao.loja.cidade}
               loja_uf={promocao.loja.uf}

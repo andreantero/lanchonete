@@ -200,7 +200,7 @@ class PromocoesList(APIView):
     def get(self, request, format=None):
         if not request.user.has_perm('lanchonetes.view_promocao'):
             return Response(False, status=status.HTTP_401_UNAUTHORIZED)
-        promocoes = Promocao.objects.all()
+        promocoes = Promocao.objects.order_by('-destaque', 'preco')
         serializer = PromocaoSerializer(promocoes, many=True)
         return Response(serializer.data)
     

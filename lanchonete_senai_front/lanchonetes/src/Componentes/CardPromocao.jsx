@@ -1,6 +1,7 @@
 import React from "react";
 
 function CardPromocao(props) {
+  let destaque = props.destaque;
   return (
     <div className="col-md-4">
       <div className="card flex-md-row mb-4 shadow-sm h-md-200">
@@ -15,10 +16,10 @@ function CardPromocao(props) {
             </div>
             <div className="col">
               <h4 className="mb-0">{props.produto}</h4>
-              <span className="font-weight-bold my-2">R$ {props.preco}</span>
+              <h4><span className="badge badge-danger px-3 my-2">R$ {props.preco}</span></h4>
             </div>
           </div>
-          <div className="row">
+          <div className="row align-items-center">
             <div className="col mb-2">
               <button
                 className="btn btn-primary"
@@ -30,6 +31,9 @@ function CardPromocao(props) {
                 Ver Mais
               </button>
             </div>
+            <div className="col mb-2">
+              <h2><span className="badge badge-success">{destaque ? 'Imperdível!' : ''}</span></h2>
+            </div>
           </div>
           <div className="row">
             <div className="col">
@@ -37,7 +41,7 @@ function CardPromocao(props) {
                 <div className="card-body">
                   <div className="row">
                     <div className="col">
-                      <p>{props.produto}</p>
+                      <p>{props.descricao}</p>
                     </div>
                   </div>
                   <hr/>
@@ -50,7 +54,7 @@ function CardPromocao(props) {
                   <hr/>
                   <div className="row">
                     <div className="col">
-                      <small>Categoria: {props.produto}</small>
+                      <small>Categoria: {props.categoria}</small>
                     </div>
                   </div>
                 </div>
