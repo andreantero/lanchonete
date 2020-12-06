@@ -24,13 +24,13 @@ class Login(APIView):
                 user.groups.add(cliente)
                 login(request,user)
                 return Response(True, status=status.HTTP_200_OK)
-        except (Exception, IntegrityError) as e:
+        except (Exception, IntegrityError):
             return Response(data=False, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
     def get(self, request):
-        nome = request.POST['nome']
-        senha = request.POST['senha']
+        nome = request.GET['nome']
+        senha = request.GET['senha']
         user = authenticate(request, username=nome, password=senha) #método para verificar se a senha está correta
         if user is not None:
             login(request, user)

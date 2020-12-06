@@ -3,7 +3,7 @@ import Header from './Componentes/Header'
 import FilterMenu from './Componentes/FilterMenu'
 import Produtos from './Componentes/Produtos'
 import Promocoes from './Componentes/Promocoes'
-import Login from './Componentes/Login';
+
 
 function Principal(props) {
 	console.log(props);
@@ -31,9 +31,6 @@ function Principal(props) {
 			{/* <Produtos categoriaAtiva={categoriaAtiva}></Produtos> */}
 			<Promocoes categoriaAtiva={categoriaAtiva}></Promocoes>
 		</div>
-		// <div className="container-fluid">
-		// 	<Login></Login>
-		// </div>
 	);
 }
 
