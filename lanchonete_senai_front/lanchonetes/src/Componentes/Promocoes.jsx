@@ -26,7 +26,7 @@ class Promocoes extends Component {
       .get(url, { auth: { username: "admin", password: "testando.sempre" } })
       .then((response) => {
         this.setState({ promocoes: response.data });
-        console.log(response.data);
+
       })
       .catch((error) => {
         console.log(error);
