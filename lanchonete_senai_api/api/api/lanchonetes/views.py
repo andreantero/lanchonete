@@ -9,13 +9,15 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.http import Http404
+import json
 
 class Login(APIView):
 
     def post(self, request):
-        nome = request.POST['nome']
-        email = request.POST['email']
-        senha = request.POST['senha']
+        post = json.loads(request.data['data'])
+        nome = post['nome']
+        email = post['email']
+        senha = post['senha']
         try:
             user = User.objects.create_user(nome, email, senha)
             user.save()

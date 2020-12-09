@@ -24,9 +24,13 @@ class Cadastro extends React.Component {
 
   handleCadastro(e) {
     e.preventDefault();
+    let config = {
+      headers: {'Accept': 'text/html; q=1.0, /'}
+    };
     let url = "http://localhost:8000/api/autenticacao/"
     // NOTE request to api Cadastro here instead of this fake promise
-    axios.post(url, {params: {nome: this.state.username, email: this.state.email, senha: this.state.password}})
+    let dados = JSON.stringify({nome: this.state.username, email: this.state.email, senha: this.state.password})
+    axios.post(url, {data: dados}, config)
     .then( () => {
       this.props.history.push("/");      
     })
