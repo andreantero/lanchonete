@@ -2,14 +2,15 @@ import React from 'react';
 import Header from './Componentes/Header'
 import FilterMenu from './Componentes/FilterMenu'
 import Produtos from './Componentes/Produtos'
-import Login from './Componentes/Login';
+import Promocoes from './Componentes/Promocoes'
+
 
 function Principal(props) {
-
+	console.log(props);
 	// Categorias a serem apresentadas no menu
 	const categorias = [
 		{'url': 'lojas', 'nome': 'Lojas'}, 
-		{'url': 'produtos', 'nome': 'Produtos'},
+		{'url': 'produtos', 'nome': 'Promocoes'},
 	];
 	// define a variável categoria ativa
 	let categoriaAtiva;
@@ -21,16 +22,15 @@ function Principal(props) {
 	} else {
 		categoriaAtiva = 'geral';
 	}
-
+	console.log(props.match.params.categoria);
+	console.log(categoriaAtiva);
 	return (
 		<div className="container-fluid">
 			<Header titulo={'SENAI LANCHES'} logo={'/logo192.png'} />
 			<FilterMenu categorias={categorias} categoriaAtiva={categoriaAtiva}></FilterMenu>
-			<Produtos categoriaAtiva={categoriaAtiva}></Produtos>
+			{/* <Produtos categoriaAtiva={categoriaAtiva}></Produtos> */}
+			<Promocoes categoriaAtiva={categoriaAtiva}></Promocoes>
 		</div>
-		// <div className="container-fluid">
-		// 	<Login></Login>
-		// </div>
 	);
 }
 

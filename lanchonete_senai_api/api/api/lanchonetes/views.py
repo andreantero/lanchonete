@@ -9,27 +9,30 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.http import Http404
+import json
 
 class Login(APIView):
 
     def post(self, request):
-        nome = request.POST['nome']
-        email = request.POST['email']
-        senha = request.POST['senha']
+        post = json.loads(request.data['data'])
+        nome = post['nome']
+        email = post['email']
+        senha = post['senha']
         try:
             user = User.objects.create_user(nome, email, senha)
             user.save()
             if user is not None:
                 cliente = Group.objects.get(name='cliente')
                 user.groups.add(cliente)
+                login(request,user)
                 return Response(True, status=status.HTTP_200_OK)
-        except (Exception, IntegrityError) as e:
+        except (Exception, IntegrityError):
             return Response(data=False, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
     def get(self, request):
-        nome = request.POST['nome']
-        senha = request.POST['senha']
+        nome = request.GET['nome']
+        senha = request.GET['senha']
         user = authenticate(request, username=nome, password=senha) #método para verificar se a senha está correta
         if user is not None:
             login(request, user)
@@ -40,12 +43,9 @@ class Login(APIView):
 
 class Logout(APIView):
 
-    def do_logout(request, pk):
-        logout(request)
-        return Response(True) #redireciona para a página de login novamente
-
     def get(self, request):
-        self.do_logout(request)
+        logout(request)
+        return Response(True)
         
 
 class LojasList(APIView):
@@ -202,7 +202,7 @@ class PromocoesList(APIView):
     def get(self, request, format=None):
         if not request.user.has_perm('lanchonetes.view_promocao'):
             return Response(False, status=status.HTTP_401_UNAUTHORIZED)
-        promocoes = Promocao.objects.all()
+        promocoes = Promocao.objects.order_by('-destaque', 'preco')
         serializer = PromocaoSerializer(promocoes, many=True)
         return Response(serializer.data)
     

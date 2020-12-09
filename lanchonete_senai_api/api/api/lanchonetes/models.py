@@ -47,8 +47,7 @@ class Promocao(models.Model):
     preco = models.DecimalField(max_digits=15,decimal_places=2)
     cupom = models.CharField(max_length=20)
     destaque = models.BooleanField(default=False)
-
-    
+        
     class Meta:
         verbose_name = ("Promoção")
         verbose_name_plural = ("Promoções")
